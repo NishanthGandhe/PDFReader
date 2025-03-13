@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Question Answering System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="file"], input[type="text"], button {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        input[type="text"] {
+            width: 100%;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #upload-section, #query-section {
+            margin-bottom: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border-left: 4px solid #4CAF50;
+            background-color: #f5f5f5;
+        }
+        .hidden {
+            display: none;
+        }
+        .metadata {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .confidence {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .low-confidence {
+            color: #ff9800;
+        }
+        .processing-time {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 10px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        details {
+            margin: 10px 0;
+        }
+        details summary {
+            cursor: pointer;
+            color: #666;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>PDF Question Answering System</h1>
+
+    <div class="container" id="upload-section">
+        <h2>Upload PDF Document</h2>
+        <form id="upload-form">
+            <label for="pdf_file">Select PDF file:</label>
+            <input type="file" id="pdf_file" name="pdf_file" accept=".pdf" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="upload-status"></div>
+        <div id="metadata-display" class="metadata hidden"></div>
+    </div>
+
+    <div class="container hidden" id="query-section">
+        <h2>Ask Questions</h2>
+        <form id="query-form">
+            <label for="question">Enter your question about the document:</label>
+            <input type="text" id="question" name="question" placeholder="e.g., What is the main topic?" required>
+            <button type="submit">Ask</button>
+        </form>
+        <div id="result" class="hidden"></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
